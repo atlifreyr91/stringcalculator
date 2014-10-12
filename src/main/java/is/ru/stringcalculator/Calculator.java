@@ -19,7 +19,7 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",|\\\n");
+	    return numbers.split("[,|\\\n]");
 	}
       
     private static int sum(String[] numbers){
