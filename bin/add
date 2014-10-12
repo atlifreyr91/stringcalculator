@@ -1,0 +1,4 @@
+#!/bin/bash
+git add scr/main/java/is/ru/stringcalculator/Calculator.java
+git add scr/test/java/is/ru/stringcalculator/CalculatorTest.java
+
