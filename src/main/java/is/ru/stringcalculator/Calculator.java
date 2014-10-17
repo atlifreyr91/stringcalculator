@@ -45,7 +45,7 @@ public class Calculator {
         	}
 		}
 		if(!NegNumbers.isEmpty()){
-			throw new RuntimeException("Negatives not allowed");
+			throw new RuntimeException("Negatives not allowed: " + NegNumbers.substring(0, (NegNumbers.length() - 1)));
 		}
 		return total;
     }
