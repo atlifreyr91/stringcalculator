@@ -30,13 +30,22 @@ public class Calculator {
 	}
 
 	private static int toInt(String number){
-		return Integer.parseInt(number);
+			return Integer.parseInt(number);
 	}
-      
+
     private static int sum(String[] numbers){
  	    int total = 0;
+ 	    String NegNumbers = "";
         for(String number : numbers){
-		    total += toInt(number);
+        	if(toInt(number) > 0){
+        		total += toInt(number);
+        	}
+        	else{
+        		NegNumbers += number + ",";
+        	}
+		}
+		if(!NegNumbers.isEmpty()){
+			throw new RuntimeException("Negatives not allowed");
 		}
 		return total;
     }
