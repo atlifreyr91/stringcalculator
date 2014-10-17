@@ -19,13 +19,13 @@ public class Calculator {
 
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split("[,|\\\n]");
+	    return numbers.split("[,|\\\n,]");
 	}
 
 	private static String[] splitNumbersNewDelim(String numbers){
-		String newDelim = numbers.substring(2, 3);
-		numbers = numbers.substring(4);
-
+		int index = numbers.indexOf('\n');
+		String newDelim = numbers.substring(2, index);
+		numbers = numbers.substring(index + 1);
 		return numbers.split(newDelim);
 	}
 
@@ -38,15 +38,12 @@ public class Calculator {
  	    int n = 0;
  	    String NegNumbers = "";
         for(String number : numbers){
-        	n = toInt(number);
-        	if(n <= 1000){
-        		if(n > 0){
-        			total += n;
-        		}
-        		else{
-        			NegNumbers += number + ",";
-        		}
-        	}
+        	if(number.equals("")){ continue; }
+		        n = toInt(number);
+		       	if(n <= 1000){
+		       		if(n > 0){ total += n; }
+		       		else{ NegNumbers += number + ","; }
+		    }
 		}
 		if(!NegNumbers.isEmpty()){
 			throw new RuntimeException("Negatives not allowed: " + NegNumbers.substring(0, (NegNumbers.length() - 1)));

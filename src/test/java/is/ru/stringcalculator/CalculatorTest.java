@@ -50,8 +50,13 @@ public class CalculatorTest {
     }
 
     @Test 
-    public void TestIgnoreNumbersBiggerThan1000(){
+    public void testIgnoreNumbersBiggerThan1000(){
     	assertEquals(2, Calculator.add("1001,2"));
+    }
+
+    @Test
+    public void testCustomDiliminatorOfAnyLength(){
+    	assertEquals(6, Calculator.add("//[***]\n1***2***3"));
     }
 
 }
