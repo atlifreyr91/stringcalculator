@@ -6,6 +6,9 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.startsWith("//")){
+			return sum(splitNumbersNewDelim(text));
+		}
 		else if(text.contains(",") || text.contains("\n")){
 			return sum(splitNumbers(text));
 		}
@@ -14,12 +17,20 @@ public class Calculator {
 	}
 
 
-	private static int toInt(String number){
-		return Integer.parseInt(number);
-	}
 
 	private static String[] splitNumbers(String numbers){
 	    return numbers.split("[,|\\\n]");
+	}
+
+	private static String[] splitNumbersNewDelim(String numbers){
+		String newDelim = numbers.substring(2, 3);
+		numbers = numbers.substring(4);
+
+		return numbers.split(newDelim);
+	}
+
+	private static int toInt(String number){
+		return Integer.parseInt(number);
 	}
       
     private static int sum(String[] numbers){
