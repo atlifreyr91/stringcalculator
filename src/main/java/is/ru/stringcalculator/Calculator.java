@@ -35,13 +35,17 @@ public class Calculator {
 
     private static int sum(String[] numbers){
  	    int total = 0;
+ 	    int n = 0;
  	    String NegNumbers = "";
         for(String number : numbers){
-        	if(toInt(number) > 0){
-        		total += toInt(number);
-        	}
-        	else{
-        		NegNumbers += number + ",";
+        	n = toInt(number);
+        	if(n <= 1000){
+        		if(n > 0){
+        			total += n;
+        		}
+        		else{
+        			NegNumbers += number + ",";
+        		}
         	}
 		}
 		if(!NegNumbers.isEmpty()){

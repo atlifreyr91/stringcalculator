@@ -47,7 +47,11 @@ public class CalculatorTest {
     	catch (RuntimeException ex){
     		assertEquals("Negatives not allowed: -4,-5", ex.getMessage());
     	}
-    	   
+    }
+
+    @Test 
+    public void TestIgnoreNumbersBiggerThan1000(){
+    	assertEquals(2, Calculator.add("1001,2"));
     }
 
 }
