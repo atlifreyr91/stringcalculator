@@ -6,6 +6,9 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("][")){
+			return sum(splitNumbersMultyDelim(text));
+		}
 		else if(text.startsWith("//")){
 			return sum(splitNumbersNewDelim(text));
 		}
@@ -17,16 +20,31 @@ public class Calculator {
 	}
 
 
-
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split("[,|\\\n,]");
+	    return numbers.split("[,|\\\n]");
 	}
 
 	private static String[] splitNumbersNewDelim(String numbers){
 		int index = numbers.indexOf('\n');
 		String newDelim = numbers.substring(2, index);
 		numbers = numbers.substring(index + 1);
-		return numbers.split(newDelim);
+ 		return numbers.split(newDelim);
+	}
+
+	private static String[] splitNumbersMultyDelim(String numbers){
+		int end = numbers.indexOf('\n');           //newLineIndex
+		int begin = numbers.indexOf(']');           //FirstDeliminatorIndex
+		String delimnators = numbers.substring(2, begin);   // [*
+
+		for(int i = begin; i < end; i++){
+			if(numbers.charAt(i) == '['){
+				delimnators += "|\\" + numbers.substring(i + 1, numbers.indexOf(']', i));
+			}
+		}
+
+		delimnators += "]";
+		numbers = numbers.substring(end + 1);
+		return numbers.split(delimnators);
 	}
 
 	private static int toInt(String number){

@@ -35,7 +35,7 @@ public class CalculatorTest {
     }
 
    	@Test
-    public void testCustomDilimiters(){
+    public void testCustomDelimiters(){
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }
     
@@ -55,8 +55,13 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testCustomDiliminatorOfAnyLength(){
+    public void testCustomDeliminatorOfAnyLength(){
     	assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+    }
+
+    @Test
+    public void testAllowMultipleDelimiters(){
+    	assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
     }
 
 }
