@@ -19,6 +19,11 @@ public class CalculatorTest {
 		assertEquals(1, Calculator.add("1"));
 	}
 
+    @Test 
+    public void testAnyNumber() {
+        assertEquals(2, Calculator.add("2"));
+    }
+
 	@Test
 	public void testTwoNumbers() {
 		assertEquals(3, Calculator.add("1,2"));
@@ -65,7 +70,7 @@ public class CalculatorTest {
     }
 
     @Test 
-    public void testAllowMultipbeDelimitersOfAnyLength(){
+    public void testAllowMultiplbeDelimitersOfAnyLength(){
         assertEquals(6, Calculator.add("//[***][%%]\n1***2%%3"));
     }
 }

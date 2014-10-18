@@ -3,9 +3,11 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
+		// If string is empty
 		if(text.equals("")){
 			return 0;
 		}
+		// If string contains 
 		else if(text.contains("][")){
 			return sum(splitNumbersMultyDelim(text));
 		}
@@ -16,7 +18,7 @@ public class Calculator {
 			return sum(splitNumbers(text));
 		}
 		else
-			return 1;
+			return toInt(text);
 	}
 
 
@@ -68,7 +70,5 @@ public class Calculator {
 		}
 		return total;
     }
-
-
 
 }
